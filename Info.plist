@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AMAccepts</key>
+	<dict>
+		<key>Container</key>
+		<string>List</string>
+		<key>Optional</key>
+		<false/>
+		<key>Types</key>
+		<array>
+			<string>com.apple.cocoa.path</string>
+		</array>
+	</dict>
+	<key>AMApplication</key>
+	<string>System</string>
+	<key>AMCanShowSelectedItemsWhenRun</key>
+	<true/>
+	<key>AMCanShowWhenRun</key>
+	<true/>
+	<key>AMCategory</key>
+	<string>Sound</string>
+	<key>AMDescription</key>
+	<dict>
+		<key>AMDNote</key>
+		<string>Action will only play audio files of types AIFF, M4A, MPEG (MP3), WAV, and ULAW.</string>
+		<key>AMDRequires</key>
+		<string>(Audio Files)</string>
+		<key>AMDSummary</key>
+		<string>This action plays sound file that are passed to it.</string>
+	</dict>
+	<key>AMKeywords</key>
+	<array>
+		<string>Play</string>
+		<string>Audio</string>
+		<string>Sound</string>
+		<string>Music</string>
+	</array>
+	<key>AMName</key>
+	<string>Play Sound</string>
+	<key>AMProvides</key>
+	<dict>
+		<key>Container</key>
+		<string>List</string>
+		<key>Types</key>
+		<array>
+			<string>com.apple.applescript.object</string>
+		</array>
+	</dict>
+	<key>AMRequiredResources</key>
+	<array/>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleExecutable</key>
+	<string>Play Sound</string>
+	<key>CFBundleGetInfoString</key>
+	<string>Play Sound version 1.0, Copyright (c) 2005, James Badger.</string>
+	<key>CFBundleIdentifier</key>
+	<string>ca.jamesbadger.playSound</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>Play Sound</string>
+	<key>CFBundlePackageType</key>
+	<string>BNDL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>1.0</string>
+	<key>NSPrincipalClass</key>
+	<string>Play_Sound</string>
+</dict>
+</plist>
