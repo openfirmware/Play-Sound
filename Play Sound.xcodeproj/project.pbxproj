@@ -249,9 +249,15 @@
 		5902C1F0134A973D0034AF2B /* Deployment */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = (
+					x86_64,
+					i386,
+					ppc,
+				);
 				COPY_PHASE_STRIP = YES;
 				DEPLOYMENT_LOCATION = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_GC = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Play Sound_Prefix.pch";
@@ -263,6 +269,8 @@
 				OTHER_OSAFLAGS = "-x -t 0 -c 0";
 				PREBINDING = NO;
 				PRODUCT_NAME = "Play Sound";
+				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
+				SDKROOT_x86_64 = macosx10.6;
 				WRAPPER_EXTENSION = action;
 				ZERO_LINK = NO;
 			};
