@@ -1,9 +1,14 @@
 About
 
-Play Sound is an Automator action that simply tries to play any sound file passed into it.
+Play Sound is an Automator action that simply tries to play any sound file 
+passed into it.
 
-It will accept a list of files, and only play audio files of types AIFF, M4A, MPEG (MP3), WAV, and ULAW. I may add support for more formats in the future, I wasn’t sure how it would handle trying to play a non-audio file.
+It will accept a list of files, and play each QuickTime-compatible file in 
+order.
 
 Installation by Source
 
-Use git to clone a copy of the repo, then build it with XCode. Open the build product to auto-install it to your Automator library (~/Library/Automator). If you want to share it with all the users on your Mac, copy it to /Library/Automator instead.
+Use git to clone a copy of the repo, then build it with XCode. Open the build 
+product to auto-install it to your Automator library (~/Library/Automator). If 
+you want to share it with all the users on your Mac, copy it to 
+/Library/Automator instead.

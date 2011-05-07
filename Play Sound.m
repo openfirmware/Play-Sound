@@ -3,7 +3,7 @@
 //  Play Sound
 //
 //  Created by James Badger on 27/10/05.
-//  Copyright 2005 James Badger. All rights reserved.
+//  Copyright 2011 James Badger. All rights reserved.
 //
 
 #import "Play Sound.h"
@@ -13,58 +13,34 @@
 
 - (bool)runWithInput:(id)input fromAction:(AMAction *)anAction error:(NSDictionary **)errorInfo
 {
-	NSEnumerator *inputRunner = [input objectEnumerator];
+	NSNotificationCenter* notificationCenter = [NSNotificationCenter defaultCenter];
+	
+	NSEnumerator* inputRunner = [input objectEnumerator];
 	id obj;
 	
 	exitNow = FALSE;
-	
 	while(obj = [inputRunner nextObject]) {
+		movie = [[QTMovie alloc] initWithFile:obj error:nil];
 		
-		NSDictionary *inputAttributes = [[NSFileManager defaultManager] fileAttributesAtPath:obj traverseLink:YES];
+		[notificationCenter addObserver:self selector:@selector(movieDidEnd:) name:QTMovieDidEndNotification object:movie];
+		movieRunning = TRUE;
+		[movie play];
 		
-		if(!exitNow && inputAttributes) {
+		while (movieRunning && !exitNow)
+			usleep(50);
 			
-			switch([inputAttributes fileHFSTypeCode]) {
-				// First test file TYPES
-				case 'AIFF':
-				case 'M4A ':
-				case 'MPEG':
-				case '.WAV':
-				case 'ULAW':
-					file = [[NSSound alloc] initWithContentsOfFile:obj byReference:NO];
-					
-					[file play];
-					
-					while([file isPlaying]) {
-						if(exitNow) {
-							[file stop];
-							break;
-						}
-					}
-			
-			break;
-			default: // Else test file ending
-				if(([[obj lowercaseString] rangeOfString:@".mp3"].length != 0) || ([[obj lowercaseString] rangeOfString:@".m4a"].length != 0) || ([[obj lowercaseString] rangeOfString:@".wav"].length != 0) || ([[obj lowercaseString] rangeOfString:@".au"].length != 0) || ([[obj lowercaseString] rangeOfString:@".aif"].length != 0)) {
-						file = [[NSSound alloc] initWithContentsOfFile:obj byReference:NO];
+		if(exitNow)
+			[movie stop];
 		
-						[file play];
-		
-						while([file isPlaying]) {
-							if(exitNow) {
-								[file stop];
-								break;
-							}
-						} // end while
-				} // end if 2
-			} // end switch 1
-		} // end if 1
+		[notificationCenter removeObserver:self name:QTMovieDidEndNotification object:movie];
+		[movie dealloc];
+	}
+	return FALSE;
+}
 
-
-
-	}	
-bool answer = FALSE;
-
-return answer;
+- (void)movieDidEnd:(NSNotification *)aNotification
+{
+	movieRunning = FALSE;
 }
 
 - (void)stop
@@ -73,18 +49,3 @@ return answer;
 }
 
 @end
-
-/*if (!exitNow && inputAttributes && ([inputAttributes fileHFSTypeCode] == 'AIFF') || ([inputAttributes fileHFSTypeCode] == 'M4A ') || ([inputAttributes fileHFSTypeCode] == 'MPEG') || ([inputAttributes fileHFSTypeCode] == '.WAV') || ([[obj lowercaseString] rangeOfString:@".mp3"].length != 0)) {
-
-file = [[NSSound alloc] initWithContentsOfFile:obj byReference:NO];
-
-[file play];
-
-while([file isPlaying]) {
-				if(exitNow) {
-					[file stop];
-					break;
-				}
-}
-
-}*/
